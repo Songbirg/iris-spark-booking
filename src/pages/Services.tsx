@@ -95,12 +95,22 @@ const Services = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in">
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-hero">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-10 left-10 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-2xl animate-blob" />
+            <div className="absolute top-20 right-10 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-2000" />
+            <div className="absolute bottom-10 left-1/3 w-96 h-96 bg-navy-light rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-4000" />
+          </div>
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
             Services & <span className="text-gradient-gold">Expertise</span>
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground">
             Bringing transformative insights and inspiring leadership to your
             organization
           </p>

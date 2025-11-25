@@ -33,12 +33,20 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in">
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-hero">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-blob" />
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-navy-light rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
+          </div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
             Born to <span className="text-gradient-gold">Be of Service</span>
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl opacity-90">
+          <p className="text-xl md:text-2xl max-w-3xl opacity-90 text-primary-foreground">
             From humble roots to corporate boardrooms and television screens -
             a journey of transformation, leadership, and unwavering commitment to
             empowerment.

@@ -64,19 +64,28 @@ const Media = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Background Image */}
         <div
-          className="absolute inset-0 z-0 opacity-20"
+          className="absolute inset-0 z-0 opacity-10"
           style={{
             backgroundImage: `url(${mediaBackground})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
+        {/* Animated Overlay */}
+        <div className="absolute inset-0 bg-gradient-hero opacity-90">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
+            <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent rounded-full mix-blend-multiply filter blur-2xl animate-pulse animation-delay-1000" />
+            <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-navy-light rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-3000" />
+          </div>
+        </div>
         <div className="container mx-auto px-4 z-10 relative">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
             Media <span className="text-gradient-gold">Portfolio</span>
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl text-muted-foreground">
+          <p className="text-xl md:text-2xl max-w-3xl text-primary-foreground opacity-90">
             Television appearances, radio interviews, publications, and more
           </p>
         </div>

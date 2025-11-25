@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,45 +82,48 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-gold transition-colors"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <button className="md:hidden p-2 text-foreground hover:text-gold transition-colors">
+                <Menu size={24} />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader>
+                <SheetTitle className="text-2xl font-serif font-bold text-left">
+                  Iris Fynn
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-6 mt-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      "text-lg font-medium transition-all duration-300 relative group py-2",
+                      location.pathname === link.path
+                        ? "text-gold"
+                        : "text-foreground hover:text-gold"
+                    )}
+                  >
+                    {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                ))}
+                <Button
+                  onClick={() => {
+                    scrollToBooking();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="mt-4 bg-gradient-gold text-navy font-semibold shadow-gold hover:scale-105 transition-transform"
+                >
+                  Book Iris
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  "block py-3 px-4 text-sm font-medium transition-colors",
-                  location.pathname === link.path
-                    ? "text-gold bg-gold/10"
-                    : "text-foreground hover:text-gold hover:bg-gold/5"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="px-4 pt-3">
-              <Button
-                onClick={() => {
-                  scrollToBooking();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full bg-gradient-gold text-navy font-semibold shadow-gold"
-              >
-                Book Iris
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
