@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -52,13 +53,23 @@ const Contact = () => {
           <div className="absolute inset-0 bg-radial-pattern opacity-20" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-serif font-bold mb-6 text-primary-foreground"
+          >
             Get in <span className="text-gradient-gold">Touch</span>
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground"
+          >
             Ready to bring inspiring leadership to your event? Let's start a
             conversation.
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -67,7 +78,13 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-card p-8 rounded-lg shadow-elegant">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card p-8 rounded-lg shadow-elegant"
+            >
               <h2 className="text-3xl font-serif font-bold mb-6">
                 Send a Message
               </h2>
@@ -120,16 +137,28 @@ const Contact = () => {
                   Send Message
                 </Button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
+            >
               <div>
                 <h2 className="text-3xl font-serif font-bold mb-6">
                   Contact Information
                 </h2>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="flex items-start space-x-4"
+                  >
                     <Mail className="h-6 w-6 text-gold mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
@@ -140,8 +169,14 @@ const Contact = () => {
                         contact@irisfynn.com
                       </a>
                     </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="flex items-start space-x-4"
+                  >
                     <Phone className="h-6 w-6 text-gold mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
@@ -152,8 +187,14 @@ const Contact = () => {
                         +27 (12) 345-6789
                       </a>
                     </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="flex items-start space-x-4"
+                  >
                     <MapPin className="h-6 w-6 text-gold mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Location</h3>
@@ -161,43 +202,50 @@ const Contact = () => {
                         Johannesburg, South Africa
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 <h3 className="text-2xl font-serif font-bold mb-4">
                   Connect on Social Media
                 </h3>
                 <div className="flex space-x-4">
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-card rounded-full hover:bg-gold hover:text-navy transition-all shadow-elegant"
-                  >
-                    <Linkedin size={24} />
-                  </a>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-card rounded-full hover:bg-gold hover:text-navy transition-all shadow-elegant"
-                  >
-                    <Twitter size={24} />
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-card rounded-full hover:bg-gold hover:text-navy transition-all shadow-elegant"
-                  >
-                    <Instagram size={24} />
-                  </a>
+                  {[
+                    { icon: Linkedin, href: "https://linkedin.com" },
+                    { icon: Twitter, href: "https://twitter.com" },
+                    { icon: Instagram, href: "https://instagram.com" },
+                  ].map((social, index) => (
+                    <motion.a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-3 bg-card rounded-full hover:bg-gold hover:text-navy transition-all shadow-elegant"
+                    >
+                      <social.icon size={24} />
+                    </motion.a>
+                  ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-gradient-hero text-primary-foreground p-8 rounded-lg">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="bg-gradient-hero text-primary-foreground p-8 rounded-lg"
+              >
                 <h3 className="text-2xl font-serif font-bold mb-4">
                   For Bookings
                 </h3>
@@ -212,8 +260,8 @@ const Contact = () => {
                 >
                   <a href="/services#booking">Go to Booking Form</a>
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>

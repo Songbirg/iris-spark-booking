@@ -2,23 +2,27 @@ import { Play, Mic, BookOpen, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import mediaBackground from "@/assets/media-background.jpg";
+import { motion } from "framer-motion";
 
 const Media = () => {
   const videoHighlights = [
     {
       title: "The Apprentice SA - Strategic Leadership",
       description: "Highlights from the show that launched a media career",
-      type: "TV Appearance",
+      type: "TV APPEARANCE",
+      videoId: "RH8i6tJjzeE",
     },
     {
       title: "Corporate Transformation Keynote",
       description: "Inspiring talk on leading organizational change",
-      type: "Speaking Event",
+      type: "SPEAKING EVENT",
+      videoId: "9PQggTfnykE",
     },
     {
       title: "Women in Leadership Panel",
       description: "Discussion on breaking barriers in business",
-      type: "Panel Discussion",
+      type: "PANEL DISCUSSION",
+      videoId: "9dT94rSzWqY",
     },
   ];
 
@@ -82,48 +86,69 @@ const Media = () => {
           </div>
         </div>
         <div className="container mx-auto px-4 z-10 relative">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-serif font-bold mb-6 text-primary-foreground"
+          >
             Media <span className="text-gradient-gold">Portfolio</span>
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl text-primary-foreground opacity-90">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl max-w-3xl text-primary-foreground opacity-90"
+          >
             Television appearances, radio interviews, publications, and more
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Video Highlights Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex items-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center mb-12"
+          >
             <Play className="h-8 w-8 text-gold mr-3" />
             <h2 className="text-4xl font-serif font-bold">Video Highlights</h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {videoHighlights.map((video, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group cursor-pointer bg-card rounded-lg overflow-hidden shadow-elegant hover:shadow-gold transition-all duration-300 hover:-translate-y-2"
+                initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group bg-card rounded-lg overflow-hidden shadow-elegant hover:shadow-gold transition-shadow duration-300"
               >
-                <div className="aspect-video bg-gradient-hero flex items-center justify-center">
-                  <Play className="h-16 w-16 text-primary-foreground opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                <div className="aspect-video">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${video.videoId}`}
+                    title={video.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-semibold text-gold uppercase tracking-wider">
-                    {video.type}
-                  </span>
-                  <h3 className="text-xl font-serif font-semibold mt-2 mb-2">
+                  <h3 className="text-xl font-serif font-semibold mb-2">
                     {video.title}
                   </h3>
                   <p className="text-muted-foreground">{video.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Video integration will be fully functional once Lovable Cloud is
-              connected
-            </p>
           </div>
         </div>
       </section>
@@ -131,15 +156,26 @@ const Media = () => {
       {/* Radio Appearances */}
       <section className="py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="flex items-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center mb-12"
+          >
             <Mic className="h-8 w-8 text-gold mr-3" />
             <h2 className="text-4xl font-serif font-bold">Radio Appearances</h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {radioAppearances.map((appearance, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-background p-6 rounded-lg shadow-elegant hover:shadow-gold transition-all duration-300"
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-background p-6 rounded-lg shadow-elegant hover:shadow-gold transition-shadow duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
                   <Star className="h-6 w-6 text-gold" />
@@ -151,7 +187,7 @@ const Media = () => {
                   {appearance.station}
                 </h3>
                 <p className="text-muted-foreground">{appearance.topic}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -160,17 +196,28 @@ const Media = () => {
       {/* Publications */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex items-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center mb-12"
+          >
             <BookOpen className="h-8 w-8 text-gold mr-3" />
             <h2 className="text-4xl font-serif font-bold">
               Publications & Features
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {publications.map((publication, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-card p-8 rounded-lg shadow-elegant hover:shadow-gold transition-all duration-300 hover:-translate-y-2"
+                initial={{ opacity: 0, y: 60, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.15, type: "spring" }}
+                whileHover={{ y: -10, scale: 1.03 }}
+                className="bg-card p-8 rounded-lg shadow-elegant hover:shadow-gold transition-shadow duration-300"
               >
                 <span className="text-xs font-semibold text-gold uppercase tracking-wider">
                   {publication.type}
@@ -179,7 +226,7 @@ const Media = () => {
                   {publication.title}
                 </h3>
                 <p className="text-muted-foreground">{publication.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -188,16 +235,36 @@ const Media = () => {
       {/* Press Kit CTA */}
       <section className="py-24 bg-gradient-hero text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-serif font-bold mb-6">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-serif font-bold mb-6"
+          >
             Need Media Materials?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 0.9, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl mb-8 max-w-2xl mx-auto"
+          >
             Download high-resolution photos, biography, and press kit for your
             event or publication.
-          </p>
-          <button className="bg-gradient-gold text-navy font-semibold px-8 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform">
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-gold text-navy font-semibold px-8 py-4 rounded-lg shadow-gold transition-transform"
+          >
             Download Press Kit
-          </button>
+          </motion.button>
         </div>
       </section>
 

@@ -5,7 +5,7 @@ import { ArrowRight, Sparkles, Users, Briefcase, Tv } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-background.png";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 const Index = () => {

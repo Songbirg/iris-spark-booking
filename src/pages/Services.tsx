@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -107,13 +108,23 @@ const Services = () => {
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-serif font-bold mb-6 text-primary-foreground"
+          >
             Services & <span className="text-gradient-gold">Expertise</span>
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground"
+          >
             Bringing transformative insights and inspiring leadership to your
             organization
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -122,11 +133,23 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-card p-8 rounded-lg shadow-elegant hover:shadow-gold transition-all duration-300 hover:-translate-y-2"
+                initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-card p-8 rounded-lg shadow-elegant hover:shadow-gold transition-shadow duration-300"
               >
-                <service.icon className="h-12 w-12 text-gold mb-4" />
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                >
+                  <service.icon className="h-12 w-12 text-gold mb-4" />
+                </motion.div>
                 <h3 className="text-2xl font-serif font-semibold mb-4">
                   {service.title}
                 </h3>
@@ -139,17 +162,21 @@ const Services = () => {
                   </h4>
                   <ul className="space-y-1">
                     {service.themes.map((theme, i) => (
-                      <li
+                      <motion.li
                         key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 + i * 0.05 }}
                         className="text-sm text-muted-foreground flex items-center"
                       >
                         <span className="w-1.5 h-1.5 bg-gold rounded-full mr-2" />
                         {theme}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -159,20 +186,39 @@ const Services = () => {
       <section className="py-24 bg-gradient-hero text-primary-foreground" id="booking">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-serif font-bold mb-6"
+            >
               Ready to Book Iris?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 0.9, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl mb-8"
+            >
               Complete our simple booking form to check availability and discuss
               your specific needs. We'll respond within 24 hours.
-            </p>
-            <Button
-              size="lg"
-              onClick={() => setIsBookingOpen(true)}
-              className="bg-gradient-gold text-navy font-semibold shadow-gold hover:scale-105 transition-transform text-lg px-10 py-6"
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Start Booking Process
-            </Button>
+              <Button
+                size="lg"
+                onClick={() => setIsBookingOpen(true)}
+                className="bg-gradient-gold text-navy font-semibold shadow-gold hover:scale-105 transition-transform text-lg px-10 py-6"
+              >
+                Start Booking Process
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -180,9 +226,15 @@ const Services = () => {
       {/* Process Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-serif font-bold text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-serif font-bold text-center mb-16"
+          >
             The Booking Process
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
@@ -206,13 +258,27 @@ const Services = () => {
                 description: "Finalize details and confirm your booking",
               },
             ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl font-serif font-bold text-gold mb-4">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 + 0.2, type: "spring" }}
+                  className="text-5xl font-serif font-bold text-gold mb-4"
+                >
                   {item.step}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -298,13 +298,6 @@ const BookingForm = ({ isOpen, onClose }: BookingFormProps) => {
                   min={new Date().toISOString().split("T")[0]}
                 />
               </div>
-              <div className="bg-muted p-4 rounded-lg">
-                <p className="text-sm text-muted-foreground">
-                  <strong>Note:</strong> Real-time calendar integration will show
-                  available dates once Lovable Cloud is connected. For now, select
-                  your preferred date and we'll confirm availability.
-                </p>
-              </div>
             </div>
           )}
 
