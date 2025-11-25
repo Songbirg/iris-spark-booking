@@ -10,10 +10,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import BookingForm from "@/components/BookingForm";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -33,8 +35,8 @@ const Navigation = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const scrollToBooking = () => {
-    window.location.href = "/services#booking";
+  const openBookingForm = () => {
+    setIsBookingOpen(true);
   };
 
   return (
@@ -74,7 +76,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button
-              onClick={scrollToBooking}
+              onClick={openBookingForm}
               className="bg-gradient-gold text-navy font-semibold shadow-gold hover:scale-105 transition-transform"
             >
               Book Iris
@@ -113,7 +115,7 @@ const Navigation = () => {
                 ))}
                 <Button
                   onClick={() => {
-                    scrollToBooking();
+                    openBookingForm();
                     setIsMobileMenuOpen(false);
                   }}
                   className="mt-4 bg-gradient-gold text-navy font-semibold shadow-gold hover:scale-105 transition-transform"
@@ -125,6 +127,7 @@ const Navigation = () => {
           </Sheet>
         </div>
       </div>
+      <BookingForm isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </nav>
   );
 };
