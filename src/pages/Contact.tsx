@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BookingForm from "@/components/BookingForm";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
@@ -16,6 +17,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -181,10 +183,10 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
                       <a
-                        href="tel:+27123456789"
+                        href="tel:+27662598261"
                         className="text-muted-foreground hover:text-gold transition-colors"
                       >
-                        +27 (12) 345-6789
+                        066 259 8261
                       </a>
                     </div>
                   </motion.div>
@@ -255,10 +257,10 @@ const Contact = () => {
                   response.
                 </p>
                 <Button
-                  asChild
+                  onClick={() => setIsBookingOpen(true)}
                   className="bg-gradient-gold text-navy font-semibold shadow-gold"
                 >
-                  <a href="/services#booking">Go to Booking Form</a>
+                  Go to Booking Form
                 </Button>
               </motion.div>
             </motion.div>
@@ -267,6 +269,7 @@ const Contact = () => {
       </section>
 
       <Footer />
+      <BookingForm isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 };
