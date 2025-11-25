@@ -264,10 +264,10 @@ const BookingForm = ({ isOpen, onClose }: BookingFormProps) => {
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="<5k">&lt; $5,000</SelectItem>
-                    <SelectItem value="5-10k">$5,000 - $10,000</SelectItem>
-                    <SelectItem value="10-20k">$10,000 - $20,000</SelectItem>
-                    <SelectItem value=">20k">&gt; $20,000</SelectItem>
+                    <SelectItem value="<5k">&lt; R5,000</SelectItem>
+                    <SelectItem value="5-10k">R5,000 - R10,000</SelectItem>
+                    <SelectItem value="10-20k">R10,000 - R20,000</SelectItem>
+                    <SelectItem value=">20k">&gt; R20,000</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
