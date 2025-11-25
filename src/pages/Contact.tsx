@@ -40,12 +40,22 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in">
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-hero">
+          <div className="absolute inset-0 opacity-25">
+            <div className="absolute top-0 left-1/4 w-80 h-80 bg-gold rounded-full mix-blend-multiply filter blur-2xl animate-blob" />
+            <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-accent rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-2000" />
+            <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-navy-light rounded-full mix-blend-multiply filter blur-2xl animate-blob animation-delay-4000" />
+          </div>
+          {/* Radial gradient overlay */}
+          <div className="absolute inset-0 bg-radial-pattern opacity-20" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 fade-in text-primary-foreground">
             Get in <span className="text-gradient-gold">Touch</span>
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 text-primary-foreground">
             Ready to bring inspiring leadership to your event? Let's start a
             conversation.
           </p>
