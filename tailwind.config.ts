@@ -66,7 +66,7 @@ export default {
         'gold': 'var(--shadow-gold)',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+        serif: ['Montserrat', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
